@@ -1,0 +1,61 @@
+version: '2.2'
+services:
+  petshop_1:
+    image: petshop
+    hostname: petshop_1
+    environment:
+      APP_VER: ${APP_VER}
+
+  petshop_2:
+    image: petshop
+    hostname: petshop_2
+    environment:
+      APP_VER: ${APP_VER}
+
+  petshop_3:
+    image: petshop
+    hostname: petshop_3
+    environment:
+      APP_VER: ${APP_VER}
+
+  petshop_4:
+    image: petshop
+    hostname: petshop_4
+    environment:
+      APP_VER: ${APP_VER}
+
+  petshop_5:
+    image: petshop
+    hostname: petshop_5
+    environment:
+      APP_VER: ${APP_VER}
+
+  petshop_6:
+    image: petshop
+    hostname: petshop_6
+    environment:
+      APP_VER: ${APP_VER}
+  
+  petshop_7:
+    image: petshop
+    hostname: petshop_7
+    environment:
+      APP_VER: ${APP_VER}
+
+  petshop_8:
+    image: petshop
+    hostname: petshop_8
+    environment:
+      APP_VER: ${APP_VER}
+
+  petshop_9:
+    image: petshop
+    hostname: petshop_9
+    environment:
+      APP_VER: ${APP_VER}
+
+  petshop_10:
+    image: petshop
+    hostname: petshop_10
+    environment:
+      APP_VER: ${APP_VER}
