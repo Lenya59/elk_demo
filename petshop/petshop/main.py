@@ -26,8 +26,23 @@ def stable_app():
     request_handler = RequestHandler()
 
     actions = []
-    actions.extend([identity_manager.scenario_brutforce] * 1),
-    actions.extend([identity_manager.scenario_default] * 5),
+    actions.extend([identity_manager.scenario_failed_login] * 1)
+    actions.extend([identity_manager.scenario_successful_login] * 5)
+    actions.extend([database_connector.scenario_query_executed] * 20)
+    actions.extend([request_handler.scenario_handle_200] * 20)
+    actions.extend([request_handler.scenario_handle_404] * 3)
+    execution_loop(actions)
+
+
+def brutforced_app():
+    identity_manager = IdentityManager()
+    database_connector = DatabaseConnector()
+    request_handler = RequestHandler()
+
+    actions = []
+    actions.extend([identity_manager.scenario_brutforce] * 3)
+    actions.extend([identity_manager.scenario_failed_login] * 1)
+    actions.extend([identity_manager.scenario_successful_login] * 5)
     actions.extend([database_connector.scenario_query_executed] * 20)
     actions.extend([request_handler.scenario_handle_200] * 20)
     actions.extend([request_handler.scenario_handle_404] * 3)
@@ -41,8 +56,8 @@ def ai_powered():
     ai = AI()
 
     actions = []
-    actions.extend([identity_manager.scenario_brutforce] * 1),
-    actions.extend([identity_manager.scenario_default] * 5),
+    actions.extend([identity_manager.scenario_brutforce] * 1)
+    actions.extend([identity_manager.scenario_successful_login] * 5)
     actions.extend([database_connector.scenario_query_executed] * 20)
     actions.extend([request_handler.scenario_handle_200] * 20)
     actions.extend([request_handler.scenario_handle_404] * 3)
@@ -62,10 +77,11 @@ if __name__ == '__main__':
     logger = get_logger('main')
     app_ver = environ.get('APP_VER')
     versions = {
+        '1.0': brutforced_app,
         '2.0': ai_powered,
         '3.0': handler_broken,
     }
-    if  app_ver in versions:
+    if app_ver in versions:
         versions.get(app_ver)()
     else:
         stable_app()

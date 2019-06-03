@@ -1,0 +1,21 @@
+PUT _template/logstash-logtext
+{
+    "order": 10,
+    "index_patterns": [
+        "logstash-*"
+    ],
+    "settings": {},
+    "mappings": {
+        "doc": {
+            "properties": {
+                "host": {
+                    "properties": {
+                        "name": {
+                            "type": "keyword"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

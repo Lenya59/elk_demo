@@ -4,13 +4,18 @@ function generate_post_data() {
 {
     "version": "${1}",
     "description": "${@:2}",
-    "timestamp": "$(date +%Y-%m-%dT%H:%M:%S%:z)"
+    "timestamp": "$(date +%Y-%m-%dT%H:%M:%S%:z)",
+    "maintainer": "mr. rainbow"
 }
 EOF
 }
 
 if [ -z "${1}" ]; then
   echo ERROR. specify app version
+  echo -e '\t1.0 - stable app'
+  echo -e '\t2.0 - app with AI'
+  echo -e '\t3.0 - 500 error bug'
+  echo -e '\tanything else - stable app'
   exit 1
 fi
 
