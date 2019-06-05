@@ -1,6 +1,6 @@
 # ELK
 
-Hello, here you can find task overview! Main task define in README.md file.
+Hello, here you can find task overview! Main task define in README_TASK.md file.
 
 Here goes!
 ## Prerequites
