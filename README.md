@@ -207,3 +207,81 @@ Let's look at the next useful KIBANA option, it will be a [Dashboard](https://ww
 ![Dashboard](https://user-images.githubusercontent.com/30426958/59099319-74f01180-892b-11e9-901c-19f6635a05c7.png)
 
 On the newly created dashboard, I added some useful visualizations that can be monitored in near real-time mode (the minimum update time is a millisecond). This allows you to analyze various qualities of the system in a very convenient mode. And as a consequence, prevent different fuckups that may arise :D
+
+
+
+Come on! Let's deploy next version of our application
+
+```Bash
+vagrant@ubuntu-xenial:/vagrant$ ./deploy.sh 3.0 - 500 error bug
+Sending build context to Docker daemon  11.72MB
+Step 1/9 : FROM python:3.5
+ ---> 74a0040526f9
+Step 2/9 : WORKDIR /usr/src/petshop
+ ---> Using cache
+ ---> 8a0fb4cbd728
+Step 3/9 : ENV PYTHONPATH=/usr/src/petshop
+ ---> Using cache
+ ---> 424c44a174bc
+Step 4/9 : ENV APP_VER=1.0
+ ---> Using cache
+ ---> c0b8798c47ea
+Step 5/9 : COPY . .
+ ---> Using cache
+ ---> ddc5787c756d
+Step 6/9 : RUN dpkg -i filebeat-oss-6.8.0-amd64.deb &&     rm -rf filebeat-oss-6.8.0-amd64.deb
+ ---> Using cache
+ ---> d43ce19f4eee
+Step 7/9 : COPY --chown=root:root filebeat.yml /etc/filebeat/filebeat.yml
+ ---> Using cache
+ ---> 6f1d532ec007
+Step 8/9 : RUN chmod 644 /etc/filebeat/filebeat.yml
+ ---> Using cache
+ ---> fb0f09b7aaed
+Step 9/9 : CMD sed -i "s|APP_VER|$APP_VER|" /etc/filebeat/filebeat.yml && service filebeat start && python ./petshop/main.py
+ ---> Using cache
+ ---> bf119f3134ae
+Successfully built bf119f3134ae
+Successfully tagged petshop:latest
+"docker rmi" requires at least 1 argument.
+See 'docker rmi --help'.
+
+Usage:  docker rmi [OPTIONS] IMAGE [IMAGE...]
+
+Remove one or more images
+Recreating vagrant_petshop_1_1 ...
+Recreating vagrant_petshop_2_1 ...
+Recreating vagrant_petshop_6_1 ...
+Recreating vagrant_petshop_1_1  ... done
+Recreating vagrant_petshop_2_1  ... done
+Recreating vagrant_petshop_6_1  ... done
+Recreating vagrant_petshop_10_1 ... done
+Recreating vagrant_petshop_7_1  ... done
+Recreating vagrant_petshop_3_1  ... done
+Recreating vagrant_petshop_4_1  ... done
+Recreating vagrant_petshop_8_1  ... done
+Recreating vagrant_petshop_5_1  ... done
+Recreating vagrant_petshop_9_1  ... done
+{"_index":"deployments","_type":"_doc","_id":"lOM5MmsBZhWh5zugOqX-","_version":1,"result":"created","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":1,"_primary_term":1}
+```
+
+Let's go to our dashboard and investigate what happened after our deployment:
+
+![3.0-deploy-dashboard](https://user-images.githubusercontent.com/30426958/59109352-9231d980-8945-11e9-8c6f-f886e78e82cd.png)
+
+...
+
+...
+
+...
+
+Finally, we have another version of the application. Let's deploy it and see what happened:
+
+```Bash
+./deploy.sh anything else - stable app
+```
+![last-version](https://user-images.githubusercontent.com/30426958/59111874-957b9400-894a-11e9-82b2-6ac707a0f58e.png)
+
+As you can see, KIBANA is very powerful tool for visualize data :D
+
+Next step is investigate [FILEBEAT](https://www.elastic.co/products/beats/filebeat) and [METRICBEAT](https://www.elastic.co/products/beats/metricbeat)
