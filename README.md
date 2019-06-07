@@ -132,7 +132,7 @@ Next step is to creating visualization:
 
 ![image](https://user-images.githubusercontent.com/30426958/58881386-cb1e4400-86e2-11e9-9ca5-57512d19e43b.png)
 
-In the column Visualization, we can choose the appropriate type of information display, such as: Area, Gauge, Heat Map, VEGA (most powerful and most complicated advanced tool). I stopped on this type as Line
+In the column [Visualization](https://www.elastic.co/guide/en/kibana/5.5/visualize.html), we can choose the appropriate type of information display, such as: Area, Gauge, Heat Map, VEGA (most powerful and most complicated advanced tool). I stopped on this type as Line
 
 
 ![visualize](https://user-images.githubusercontent.com/30426958/59091210-88917d00-8917-11e9-82eb-7ff00034914f.png)
@@ -200,3 +200,10 @@ Recreating vagrant_petshop_2_1  ... done
 Recreating vagrant_petshop_3_1  ... done
 {"_index":"deployments","_type":"_doc","_id":"FsgsMWsBZhWh5zugbn3y","_version":1,"result":"created","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":0,"_primary_term":1}
 ```
+
+Let's look at the next useful KIBANA option, it will be a [Dashboard](https://www.elastic.co/guide/en/kibana/5.5/dashboard.html). There you can combine data views from any Kibana app into one dashboard and see everything in one place.
+
+
+![Dashboard](https://user-images.githubusercontent.com/30426958/59099319-74f01180-892b-11e9-901c-19f6635a05c7.png)
+
+On the newly created dashboard, I added some useful visualizations that can be monitored in near real-time mode (the minimum update time is a millisecond). This allows you to analyze various qualities of the system in a very convenient mode. And as a consequence, prevent different fuckups that may arise :D
