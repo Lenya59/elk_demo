@@ -131,3 +131,72 @@ Kibana uses index patterns to retrieve data from Elasticsearch indices for thing
 Next step is to creating visualization:
 
 ![image](https://user-images.githubusercontent.com/30426958/58881386-cb1e4400-86e2-11e9-9ca5-57512d19e43b.png)
+
+In the column Visualization, we can choose the appropriate type of information display, such as: Area, Gauge, Heat Map, VEGA (most powerful and most complicated advanced tool). I stopped on this type as Line
+
+
+![visualize](https://user-images.githubusercontent.com/30426958/59091210-88917d00-8917-11e9-82eb-7ff00034914f.png)
+
+As you can see in the figure below, there are many options for customizing the visualization control. In my case, along the Y axis, an aggregation of the number of elements is given (Count)
+
+On the X-axis, a Date Histogram was chosen, which means time aggregation. A sub-bucket was also added, which Aggregated across the ```host.name.keyword``` field.
+
+
+
+![controling](https://user-images.githubusercontent.com/30426958/59091735-a57a8000-8918-11e9-99ee-49b65fca0626.png)
+
+
+* When we have fully explored the first version of the application, you can proceed to deploy the second version:
+
+```Bash
+vagrant@ubuntu-xenial:/vagrant$ ./deploy.sh 2.0 - app with AI
+Sending build context to Docker daemon  11.72MB
+Step 1/9 : FROM python:3.5
+ ---> 74a0040526f9
+Step 2/9 : WORKDIR /usr/src/petshop
+ ---> Using cache
+ ---> 8a0fb4cbd728
+Step 3/9 : ENV PYTHONPATH=/usr/src/petshop
+ ---> Using cache
+ ---> 424c44a174bc
+Step 4/9 : ENV APP_VER=1.0
+ ---> Using cache
+ ---> c0b8798c47ea
+Step 5/9 : COPY . .
+ ---> Using cache
+ ---> ddc5787c756d
+Step 6/9 : RUN dpkg -i filebeat-oss-6.8.0-amd64.deb &&     rm -rf filebeat-oss-6.8.0-amd64.deb
+ ---> Using cache
+ ---> d43ce19f4eee
+Step 7/9 : COPY --chown=root:root filebeat.yml /etc/filebeat/filebeat.yml
+ ---> Using cache
+ ---> 6f1d532ec007
+Step 8/9 : RUN chmod 644 /etc/filebeat/filebeat.yml
+ ---> Using cache
+ ---> fb0f09b7aaed
+Step 9/9 : CMD sed -i "s|APP_VER|$APP_VER|" /etc/filebeat/filebeat.yml && service filebeat start && python ./petshop/main.py
+ ---> Using cache
+ ---> bf119f3134ae
+Successfully built bf119f3134ae
+Successfully tagged petshop:latest
+"docker rmi" requires at least 1 argument.
+See 'docker rmi --help'.
+
+Usage:  docker rmi [OPTIONS] IMAGE [IMAGE...]
+
+Remove one or more images
+Recreating vagrant_petshop_7_1 ...
+vagrant_logstash_1 is up-to-date
+Recreating vagrant_petshop_4_1 ...
+Recreating vagrant_petshop_7_1  ... done
+Recreating vagrant_petshop_4_1  ... done
+Recreating vagrant_petshop_1_1  ... done
+Recreating vagrant_petshop_8_1  ... done
+Recreating vagrant_petshop_5_1  ... done
+Recreating vagrant_petshop_6_1  ... done
+Recreating vagrant_petshop_10_1 ... done
+Recreating vagrant_petshop_9_1  ... done
+Recreating vagrant_petshop_2_1  ... done
+Recreating vagrant_petshop_3_1  ... done
+{"_index":"deployments","_type":"_doc","_id":"FsgsMWsBZhWh5zugbn3y","_version":1,"result":"created","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":0,"_primary_term":1}
+```
