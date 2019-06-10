@@ -610,4 +610,5 @@ Jun 10 12:51:34 ubuntu-xenial filebeat[25497]: 2019-06-10T12:51:34.417Z        I
 Go to the Dashboard page and select the dashboard that you want to open.
 
 ![filebeat-dash](https://user-images.githubusercontent.com/30426958/59196682-fd72ea00-8b97-11e9-8265-d5d05a0c3f29.png)
+
 These dashboards are designed to work out-of-the box when you use Filebeat modules. However, you can also use them as examples and customize them to meet your needs even if you aren’t using Filebeat modules
